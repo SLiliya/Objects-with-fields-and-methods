@@ -1,4 +1,5 @@
 package ru.netology.Radio;
+
 public class Radio {
     //работа с радиостанциями
     public int radioStationNumber;
