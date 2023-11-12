@@ -1,68 +1,67 @@
 package ru.netology.Radio;
 
-public class Radio {
-    //работа с радиостанциями
-    public int radioStationNumber;
 
-    public void setRadioStationNumber(int newRadioStationNumber) {
-        if (newRadioStationNumber > 9) {
+public class Radio {
+    private int radioStationNumber;
+    private int soundVolume;
+
+    //работа с радиостанциями
+    public int getRadioStationNumber() {
+        return radioStationNumber;
+    }
+
+    public void setRadioStationNumber(int radioStationNumber) {
+        if (radioStationNumber < 0) {
             return;
         }
-
-        radioStationNumber = newRadioStationNumber;
+        if (radioStationNumber > 9) {
+            return;
+        }
+        this.radioStationNumber = radioStationNumber;
     }
 
-    public void next(int newRadioStationNumber) {
-        if (newRadioStationNumber >= 9) {
-            newRadioStationNumber = 0;
+    public void next() {
+        if (radioStationNumber != 9) {
+            radioStationNumber++;
         } else {
-            newRadioStationNumber++;
+            radioStationNumber = 0;
         }
-
-        radioStationNumber = newRadioStationNumber;
     }
 
-    public void prev(int newRadioStationNumber) {
-        if (newRadioStationNumber <= 0) {
-            newRadioStationNumber = 9;
+    public void prev() {
+        if (radioStationNumber != 0) {
+            radioStationNumber--;
         } else {
-            newRadioStationNumber--;
+            radioStationNumber = 9;
         }
-
-        radioStationNumber = newRadioStationNumber;
     }
 
 
     //работа с уровнем громкости звука
 
-    public int soundVolume;
-
-    public void setSoundVolume(int newSoundVolume) {
-        if (newSoundVolume >= 100) {
-            newSoundVolume = 100;
-        }
-        if (newSoundVolume < 1) {
-            newSoundVolume = 0;
-        }
-        soundVolume = newSoundVolume;
+    public int getSoundVolume() {
+        return soundVolume;
     }
 
-    public void increaseVolume(int newSoundVolume) {
-        if (newSoundVolume < 100) {
-            newSoundVolume++;
-        } else {
-            newSoundVolume = 100;
+    public void setSoundVolume(int soundVolume) {
+        if (100 < soundVolume) {
+            return;
         }
-        soundVolume = newSoundVolume;
+        if (soundVolume < 0) {
+            return;
+        }
+        this.soundVolume = soundVolume;
     }
 
-    public void lowerVolume(int newSoundVolume) {
-        if (newSoundVolume < 1) {
-            newSoundVolume = 0;
-        } else {
-            newSoundVolume--;
+    public void increaseVolume() {
+        if (soundVolume < 100) {
+            soundVolume++;
         }
-        soundVolume = newSoundVolume;
+    }
+
+    public void lowerVolume() {
+        if (soundVolume > 0) {
+            soundVolume = soundVolume - 1;
+        }
     }
 }
-
