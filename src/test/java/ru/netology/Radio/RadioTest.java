@@ -17,6 +17,16 @@ public class RadioTest {
     }
 
     @Test
+    public void newShouldSetStationNumber() {
+        Radio number = new Radio(20);
+        number.setRadioStationNumber(15);
+
+        int expected = 15;
+        int actual = number.getRadioStationNumber();
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldSetStationNumber2() {
         Radio number = new Radio();
         number.setRadioStationNumber(9);
