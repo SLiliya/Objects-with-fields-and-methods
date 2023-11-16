@@ -4,8 +4,18 @@ package ru.netology.Radio;
 public class Radio {
     private int radioStationNumber;
     private int soundVolume;
+    private int maxRadioStationNumber;
 
     //работа с радиостанциями
+
+    public Radio() {
+        this.maxRadioStationNumber = 9;
+    }
+
+    public Radio(int radioStationNumber) {
+        this.maxRadioStationNumber = radioStationNumber - 1;
+    }
+
     public int getRadioStationNumber() {
         return radioStationNumber;
     }
@@ -14,14 +24,14 @@ public class Radio {
         if (radioStationNumber < 0) {
             return;
         }
-        if (radioStationNumber > 9) {
+        if (radioStationNumber > maxRadioStationNumber) {
             return;
         }
         this.radioStationNumber = radioStationNumber;
     }
 
     public void next() {
-        if (radioStationNumber != 9) {
+        if (radioStationNumber != maxRadioStationNumber) {
             radioStationNumber++;
         } else {
             radioStationNumber = 0;
@@ -32,7 +42,7 @@ public class Radio {
         if (radioStationNumber != 0) {
             radioStationNumber--;
         } else {
-            radioStationNumber = 9;
+            radioStationNumber = maxRadioStationNumber;
         }
     }
 
